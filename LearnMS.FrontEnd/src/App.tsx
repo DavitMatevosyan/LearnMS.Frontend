@@ -1,26 +1,40 @@
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
+import { Link, Route, Routes} from "react-router-dom"
 import Landing from "./routes/Landing/Landing";
 import SignUp from "./routes/Auth/SignUp/SignUp";
-import Login from "./routes/Auth/Login/Login";
 import Auth from "./routes/Auth/Auth";
-import Home from "./routes/Landing/Home";
+import MainPage from "./routes/Main/MainPage";
+import { Layout } from "antd";
+import { Content, Footer, Header } from "antd/es/layout/layout";
+import Sider from "antd/es/layout/Sider";
 
-const router = createBrowserRouter(
-	createRoutesFromElements(
-		<Route path="/" element={<Landing />}>
-			<Route index element={<Home />} />
-			<Route path="Auth" element={<Auth />} >
-				<Route path="Signup" element={<SignUp />} />
-				<Route path="Login" element={<Login />} />
-			</Route>
-		</Route>
-	)
-)
 
-function App({routes}) {
+function App() {
 	return (
 		<>
-			<RouterProvider router={router}/>
+			<Layout>
+				<Header>Header</Header>
+				<Layout>
+					<Sider>Left sidebar</Sider>
+					<Content>main Content</Content>
+				</Layout>
+				<Footer>footer</Footer>
+			</Layout>
+
+		<nav>
+			<ul>
+				<li><Link to="/signup">signup</Link></li>
+				<li><Link to="/auth">auth</Link></li>
+			</ul>
+		</nav>
+		<Routes>
+			<Route path="/" element={<Landing />}/>
+			<Route path="/welcome" element={<SignUp />}>
+				<Route path="auth" element={<Auth />}/>
+			</Route>
+			<Route path="/my" element={<MainPage />} />
+			
+			<Route path="*" element={<p>not found</p>} />
+		</Routes>
 		</>
 	);
 }
