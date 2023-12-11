@@ -1,0 +1,20 @@
+@import '../../styles/variables';
+
+
+.page {
+	width: 40%;
+    margin: 80px 15% 35px 7%;
+    background-color: transparent;
+    border-radius: $border-radius;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $border-color;
+};
+
+.Title {
+    margin: 15px 80px;
+}
+
+.Content {
+    margin: 30px;
+}
