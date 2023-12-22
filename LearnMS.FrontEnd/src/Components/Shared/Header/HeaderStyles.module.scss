@@ -1,0 +1,14 @@
+.Header {
+    display: flex; 
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.MenuPages { 
+    width: 500px;
+}
+
+.LoginRegister {
+    width: 500px; 
+    flex-direction: row-reverse;
+}

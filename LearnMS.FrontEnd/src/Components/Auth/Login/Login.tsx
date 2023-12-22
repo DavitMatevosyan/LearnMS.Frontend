@@ -47,12 +47,12 @@ const LoginForm: React.FC = () => (
             <Form.Item<loginFields>
             name="remember"
             valuePropName="checked"
-            wrapperCol={{ offset: 10, span: 13 }}
+            wrapperCol={{ offset: 8, span: 13 }}
             >
                 <Checkbox>Remember me</Checkbox>
             </Form.Item>
 
-            <Form.Item wrapperCol={{ offset: 10, span: 13 }}>
+            <Form.Item wrapperCol={{ offset: 9, span: 13 }}>
                 <Button type="primary" htmlType="submit">
                     Submit
                 </Button>
