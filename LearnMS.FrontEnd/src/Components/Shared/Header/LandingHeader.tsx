@@ -1,56 +1,56 @@
 import { Menu, MenuProps } from "antd";
 import { Header } from "antd/es/layout/layout";
-
 import styles from "./HeaderStyles.module.scss";
 import { SettingOutlined, MailOutlined } from "@ant-design/icons";
 import { NavigateFunction } from "react-router";
+import { Outlet } from "react-router-dom";
 
 interface LandingHeaderProps {
     navigate: NavigateFunction;
 }
 
-const LandingHeader = (props: LandingHeaderProps) => {
+const LandingHeader = (props: LandingHeaderProps): JSX.Element => {
     const { navigate } = props;
 
 	const landingMenuItems: MenuProps["items"] = [
 		{
 			key: "main",
 			label: "ICON HERE",
-			onClick: () => navigate("/"),
+			onClick: () => { navigate("/"); }
 		},
 		{
-			label: 'Technologies Used',
-			key: 'techused',
+			label: "Technologies Used",
+			key: "techused",
 			icon: <SettingOutlined />,
-			onClick: () => navigate("/TechnologyUsed"),
+			onClick: () => { navigate("/TechnologyUsed"); }
 		},
 		{
-			label: 'Contact Me',
-			key: 'app',
+			label: "Contact Me",
+			key: "app",
 			icon: <MailOutlined />,
 			children: [
 				{
-					type: 'group',
-					label: 'Methods',
+					type: "group",
+					label: "Methods",
 					children: [
 						{
-							label: 'Mail',
-							key: 'contact:mail',
+							label: "Mail",
+							key: "contact:mail"
 						},
 						{
-							label: 'LinkedIn',
-							key: 'contact:linkedin',
+							label: "LinkedIn",
+							key: "contact:linkedin"
 						},
 						{
-							label: 'Github',
-							key: 'contact:github',
+							label: "Github",
+							key: "contact:github"
 						}
-					],
+					]
 				}
 		  ]
 		}
 	  ];
-	
+
 	const loginItems: MenuProps["items"] = [
 		{
 			key: "login",
@@ -69,24 +69,26 @@ const LandingHeader = (props: LandingHeaderProps) => {
 				borderWidth: "0px 1px 0px 0px",
 				borderStyle: "solid"
 			}
-		},
+		}
 	];
-	
-
 
     return (
-        <Header className={styles.Header}>
-            <Menu className={styles.MenuPages}
-                theme="dark"
-                mode="horizontal"
-                defaultSelectedKeys={["main"]}
-                items={landingMenuItems} />
-            <Menu className={styles.LoginRegister}
-                theme="dark"
-                mode="horizontal"
-                items={loginItems} />
-        </Header>
+		<>
+			<Header className={styles.Header}>
+				<Menu className={styles.MenuPages}
+					theme="dark"
+					mode="horizontal"
+					defaultSelectedKeys={["main"]}
+					items={landingMenuItems} />
+				<Menu className={styles.LoginRegister}
+					theme="dark"
+					mode="horizontal"
+					items={loginItems} />
+			</Header>
+
+			<Outlet />
+		</>
     );
-}
+};
 
 export default LandingHeader;

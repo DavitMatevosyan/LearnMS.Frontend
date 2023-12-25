@@ -5,9 +5,7 @@ import AboutMe from "../../Components/Landing/AboutMe";
 
 import styles from "./Landing.module.scss";
 
-const Landing = () => {
-
-    return (
+const Landing = (): JSX.Element => (
         <>
             <Content className={styles.MainPage}>
                 <Flex>
@@ -15,8 +13,6 @@ const Landing = () => {
                     <AboutMe />
                 </Flex>
             </Content>
-
-
 
         {/* <Layout className="layout">
             <Header style={{display:"flex", alignItems:"center"}}>
@@ -49,7 +45,6 @@ const Landing = () => {
     </nav>
      */}
     </>
-    )
-}
+    );
 
 export default Landing;

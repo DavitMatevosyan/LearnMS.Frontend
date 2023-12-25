@@ -1,14 +1,13 @@
-import React from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input } from "antd";
 
-import styles from "./Login.module.scss"
+import styles from "./Login.module.scss";
 
-const onFinish = (values: any) => {
-  console.log('Success:', values);
+const onFinish = (values: any): void => { // should be fixed
+  console.log("Success:", values);
 };
 
-const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo);
+const onFinishFailed = (errorInfo: any): void => {
+  console.log("Failed:", errorInfo);
 };
 
 type loginFields = {
@@ -17,11 +16,11 @@ type loginFields = {
   remember?: string;
 };
 
-
-const LoginForm: React.FC = () => (
-    <div className={styles.form}>
+function LoginForm(): JSX.Element {
+  return (
+  	<div className={styles.form}>
         <Form
-        name="basic"
+        name="login-form"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 13 }}
         initialValues={{ remember: true }}
@@ -29,23 +28,23 @@ const LoginForm: React.FC = () => (
         onFinishFailed={onFinishFailed}
         autoComplete="off">
             <Form.Item<loginFields>
-            label="Username"
-            name="username"
-            rules={[{ required: true, message: 'Please input your username!' }]}
+              label="Username"
+              name="username"
+            rules={[{ required: true, message: "Please input your username!" }]}
             >
                 <Input />
             </Form.Item>
 
             <Form.Item<loginFields>
-            label="Password"
+              label="Password"
             name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
+            rules={[{ required: true, message: "Please input your password!" }]}
             >
                 <Input.Password />
             </Form.Item>
 
             <Form.Item<loginFields>
-            name="remember"
+              name="remember"
             valuePropName="checked"
             wrapperCol={{ offset: 8, span: 13 }}
             >
@@ -59,7 +58,7 @@ const LoginForm: React.FC = () => (
             </Form.Item>
         </Form>
   </div>
-
-);
+  );
+}
 
 export default LoginForm;

@@ -1,6 +1,7 @@
 {
     "env": {
         "browser": true,
+        "commonjs": true,
         "es2021": true
     },
     "extends": [
@@ -10,20 +11,13 @@
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module",
-        "project": "./tsconfig.json"
+        "ecmaVersion": "latest"
     },
     "plugins": [
+        "import",
         "@typescript-eslint",
         "react"
     ],
-    "@typescript-eslint\rules" :{
-        "quotes": [
-            "error",
-            "double"
-        ]
-    },
     "rules": {
         "indent": [
             "error",
@@ -31,16 +25,15 @@
         ],
         "linebreak-style": [
             "error",
-            "unix"
+            "windows"
         ],
         "quotes": [
             "error",
             "double"
         ],
-        
         "semi": [
             "error",
             "always"
-        ]        
+        ]
     }
 }
