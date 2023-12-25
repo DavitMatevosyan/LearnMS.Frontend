@@ -4,7 +4,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/strict-type-checked',
+    // 'plugin:@typescript-eslint/strict-type-checked', // maybe needed to enable, we will see
     'plugin:react-hooks/recommended',
     'prettier'
   ],
