@@ -5,10 +5,9 @@
 }
 
 .MenuPages { 
-    width: 500px;
-}
+flex: auto;}
 
 .LoginRegister {
-    width: 500px; 
+    flex: auto;
     flex-direction: row-reverse;
 }

@@ -13,7 +13,19 @@ export default function RegisterForm(): JSX.Element {
                         }
                     ]
                 }>
-                <Input placeholder="first name"/>
+                <Input placeholder="First name"/>
+            </Form.Item>
+            <Form.Item
+                name="lastName"
+                label="Last Name"
+                rules={[{
+                            required: true,
+                            max: 50,
+                            message: "Not valid Last Name"
+                        }
+                    ]
+                }>
+                <Input placeholder="Last name"/>
             </Form.Item>
         </Form>
     );
