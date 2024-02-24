@@ -1,7 +1,9 @@
 import { Route, Routes, useNavigate } from 'react-router-dom'
-import LandingHeader from './Components/Shared/Headers/LandingHeader/LandingHeader';
+import LandingHeader from './Components/Shared/Headers/LandingHeader';
 import Landing from './Routes/Landing/Landing';
 import RegisterForm from './Components/Auth/Register/Register';
+import UserPage from './Routes/User/UserPage';
+import { UserHeader } from './Components/Shared/Headers/UserHeader';
 
 function App() {
 	const navigate = useNavigate();
@@ -13,9 +15,11 @@ return (
             <Route path='/' element={<LandingHeader navigate={navigate}/>}>
                 <Route index element={<Landing />} />
                 <Route path="/TechnologyUsed" element={<Landing />} />
-                <Route path="/register" element={<RegisterForm />}/>
+                <Route path="/register" element={<RegisterForm navigate={navigate} />}/>
             </Route>
-            {/* <Route path="/my" element={<MainPage />} /> */}
+            <Route path='/my' element={<UserHeader navigate={navigate} />}>
+                <Route index element={<UserPage />} />
+            </Route>
             <Route path="*" element={<p>not found</p>} />
         </Routes>
         </div>

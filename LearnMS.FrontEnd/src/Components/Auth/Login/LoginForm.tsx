@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { emailRegex } from "../../../Utils/Constants/Regex";
 
 const LoginForm = () => {
     const [email, setEmail] = useState<string>('');
@@ -10,7 +11,6 @@ const LoginForm = () => {
     }
 
     const isValidToLogin = useMemo<boolean>(() => {
-        const emailRegex = new RegExp('.+\\@.+\\..+');
         if(!email && !password)
             return false;
         if(!emailRegex.test(email))

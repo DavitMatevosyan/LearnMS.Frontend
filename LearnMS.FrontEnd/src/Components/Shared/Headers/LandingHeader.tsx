@@ -1,13 +1,10 @@
 import { useState } from 'react';
-import { NavigateFunction, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BaseHeaderProps } from './useBaseHeader';
 
-type LandingHeaderProps = {
-    navigate: NavigateFunction;
-}
-
-const LandingHeader = (props: LandingHeaderProps): JSX.Element => {
+const LandingHeader = (props: BaseHeaderProps): JSX.Element => {
     const { navigate } = props;
 
     const [showContactDropdown, setShowContactDropdown] = useState<boolean>(false);
@@ -25,7 +22,11 @@ const LandingHeader = (props: LandingHeaderProps): JSX.Element => {
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active" onClick={() => navigateTo('TechnologyUsed')}>Technologies Used</a>
+                            <a className="nav-link active"
+                               onClick={() => navigateTo('TechnologyUsed')}
+                               role='button'>
+                                Technologies Used
+                            </a>
                         </li>
                         <li className="nav-item dropdown">
                             <a className={`nav-link dropdown-toggle ${showContactDropdown ? "show" : ""}`} 
