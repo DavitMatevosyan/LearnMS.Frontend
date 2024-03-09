@@ -1,13 +1,38 @@
 import { useMemo, useState } from "react";
 import { emailRegex } from "../../../Utils/Constants/Regex";
+import { NavigateFunction } from "react-router-dom";
+import { LoginModel, handleLogin } from "./useLoginHandler";
 
-const LoginForm = () => {
+type LoginFormProps = {
+    navigate: NavigateFunction;
+}
+
+const LoginForm = (props: LoginFormProps) => {
+    const { navigate } = props;
+    const [isLoading, setIsLoading] = useState<boolean>();
+    const [isError, setIsError] = useState<boolean>();
+
+    const [model, setModel] = useState<LoginModel>(
+        {
+            UserIdentifier: '',
+            password: ''
+        });
+
+
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
 
-    const handleLogin = (e: React.FormEvent) => {
+    const login = (e: React.FormEvent) => {
         e.preventDefault();
         console.log("invite pressed", email, password);  
+
+        setIsLoading(true);
+        handleLogin(model)
+            .then(() => {
+                setIsLoading(false);
+                navigate('/my')
+            })
+            .catch(() => setIsError(true));
     }
 
     const isValidToLogin = useMemo<boolean>(() => {
@@ -24,7 +49,7 @@ const LoginForm = () => {
         [email, password])
 
     return (
-        <form className="container p-3" onSubmit={(e) => handleLogin(e)}>
+        <form className="container p-3" onSubmit={(e) => login(e)}>
             <div className="mb-3 row">
                 <label className="col-sm-3 col-form-label text-end">Email</label>
                 <div className="col-sm-9">
